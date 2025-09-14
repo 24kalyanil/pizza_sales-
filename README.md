@@ -1,16 +1,25 @@
-# pizza_sales
 create database pizza_pro;
 use pizza_pro;
 select * from pizza_sales;
+
 select* from pizza_sales order by pizza_id;
+
 select sum(total_price)as total_revenue from pizza_sales;
+
 select sum(total_price) / count(distinct order_id ) from pizza_sales;
+
 select sum(total_price)/ count(distinct order_id)as avg_order_value from pizza_sales;
+
 select sum(quantity) as toal_pizza_sold from pizza_sales;
+
 select count(distinct order_id) as total_orders from pizza_sales;
+
 SELECT CAST(CAST(SUM(quantity) AS DECIMAL(10,2)) / 
+
 CAST(COUNT(DISTINCT order_id) AS DECIMAL(10,2)) AS DECIMAL(10,2))
+
 AS Avg_Pizzas_per_order
+
 FROM pizza_sales;
 
 ## HOURLY TRENDS FOR ORDERS ##
@@ -41,6 +50,6 @@ ORDER BY pizza_size;
  group by pizza_name 
  order by sum(quantity) desc;
 
-## Bottom 5 Best Sellers by Total Pizzas Sold##
-select TOP5 pizza_name, sum(quantity)as total_pizzas_sold
+## Bottom 10 Best Sellers by Total Pizzas Sold##
+select TOP10 pizza_name, sum(quantity)as total_pizzas_sold
 from pizza_sales group by pizza_name order by sum(quantity) asc;
